@@ -1,5 +1,10 @@
+package util;
+
+import producer.Operations;
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class CommandChecker {
@@ -40,7 +45,7 @@ public class CommandChecker {
     }
 
     private String[] getParsedOperation() {
-        command.trim();
+        command = command.trim();
         return command.split("\\s+");
     }
 
@@ -63,6 +68,7 @@ public class CommandChecker {
             return false;
         }
 
+        //TODO redo the check for validity of numbers through regular expressions, not throw try-catch block
         for (int i = 0; i < parsedNumbers.length; i++) {
             try {
                 new BigDecimal(parsedNumbers[i]);
@@ -84,12 +90,7 @@ public class CommandChecker {
     }
 
     public ArrayList<BigDecimal> getNumbers() {
-        ArrayList<BigDecimal> numbers = new ArrayList<>();
 
-        for (int i = 0; i < parsedNumbers.length; i++) {
-            numbers.add(new BigDecimal(parsedNumbers[i]));
-        }
-
-        return numbers;
+        return Arrays.stream(parsedNumbers).map(BigDecimal::new).collect(Collectors.toCollection(ArrayList::new));
     }
 }

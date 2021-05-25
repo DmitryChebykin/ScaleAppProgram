@@ -1,6 +1,10 @@
+package controller.receiver;
+
+import producer.Operations;
+import util.CommandChecker;
 import java.util.Scanner;
 
-public class ConsoleDataReader implements OperationsProvidable {
+public class ConsoleDataReader extends DataReceiver {
     public Operations getOperation() {
         CommandChecker commandChecker = new CommandChecker();
         boolean isCorrectInput = false;

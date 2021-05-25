@@ -1,7 +1,9 @@
+package producer;
+
 import java.math.BigDecimal;
 import java.util.ArrayList;
 
-enum Operations {
+public enum Operations {
     ADDITION("add"),
     TWO_DIVISION_THIRD_ADDITION("sup"),
     MULTIPLICATION("mul");
@@ -39,24 +41,12 @@ enum Operations {
                 result = numbers.stream().reduce(BigDecimal.ZERO, (BigDecimal::add));
                 break;
             case TWO_DIVISION_THIRD_ADDITION:
-                result = getTwoDivisionThirdAddition();
+                result = numbers.stream().limit(2).reduce(BigDecimal.ONE, (BigDecimal::multiply)).add(numbers.get(2));
                 break;
             case MULTIPLICATION:
                 result = numbers.stream().reduce(BigDecimal.ONE, (BigDecimal::multiply));
                 break;
         }
-
-        return result;
-    }
-
-    private BigDecimal getTwoDivisionThirdAddition() {
-        BigDecimal result = BigDecimal.ONE;
-
-        for (int i = 0; i < numbers.size() - 1; i++) {
-            result = result.multiply(numbers.get(i));
-        }
-
-        result = result.add(numbers.get(2));
 
         return result;
     }

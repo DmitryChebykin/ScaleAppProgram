@@ -1,5 +1,7 @@
+import producer.Application;
+
 public class Main {
     public static void main(String[] args) {
-        CalculateProgram.run(args);
+        Application.run(args);
     }
 }
