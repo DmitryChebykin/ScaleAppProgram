@@ -33,7 +33,7 @@ public enum Operations {
         this.numbers = numbers;
     }
 
-    public BigDecimal getCalculationResult() {
+    public BigDecimal getResult() {
         BigDecimal result = null;
 
         switch (this) {

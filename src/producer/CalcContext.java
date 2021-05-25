@@ -1,12 +1,13 @@
-package controller;
+package producer;
 
-import producer.Operations;
+import controller.IDataReceiver;
+import controller.IDataSender;
 
-public class Context implements IContext {
+public class CalcContext implements IContext {
     private IDataReceiver dataReceiver;
     private IDataSender dataSender;
 
-    public Context(IDataReceiver dataReceiver, IDataSender dataSender) {
+    public CalcContext(IDataReceiver dataReceiver, IDataSender dataSender) {
         this.dataReceiver = dataReceiver;
         this.dataSender = dataSender;
     }
@@ -31,7 +32,7 @@ public class Context implements IContext {
     public void run() {
         Operations o = dataReceiver.getOperation();
         if (o != null) {
-            dataSender.setResult(o.getCalculationResult().toString());
+            dataSender.setResult(o.getResult().toString());
             dataSender.sendResult();
         }
     }

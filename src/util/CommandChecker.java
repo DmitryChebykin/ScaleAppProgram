@@ -40,10 +40,6 @@ public class CommandChecker {
         parsedNumbers = temp;
     }
 
-    public boolean isCommandRight() {
-        return false;
-    }
-
     private String[] getParsedOperation() {
         command = command.trim();
         return command.split("\\s+");
@@ -54,17 +50,16 @@ public class CommandChecker {
         return Stream.of(Operations.values()).anyMatch(x -> x.getOperationName().equals(consoleOperation));
     }
 
-    private boolean isNumbersQuantityForSuperCalcValid() {
+    private boolean isSupNumbersQuantityValid() {
         return parsedNumbers.length >= MIN_NUMBERS_QUANTITY_FOR_SUP;
     }
 
     private boolean isNumbersValid() {
-
         if (parsedNumbers.length < MIN_NUMBERS_QUANTITY) {
             return false;
         }
 
-        if (parsedOperation.equals(Operations.TWO_DIVISION_THIRD_ADDITION.getOperationName()) && !isNumbersQuantityForSuperCalcValid()) {
+        if (parsedOperation.equals(Operations.TWO_DIVISION_THIRD_ADDITION.getOperationName()) && !isSupNumbersQuantityValid()) {
             return false;
         }
 

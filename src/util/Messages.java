@@ -1,10 +1,14 @@
 package util;
 
 public class Messages {
+    public static final String EXIT_COMMAND = "exit";
+
+    //TODO add input file full info to message;
     public static void printFileNotFound(String inputFilePath) {
         System.out.println("Файл не найден. Работа завершена");
     }
 
+    //TODO add input file full info to message;
     public static void printFileIsEmpty(String inputFilePath) {
         System.out.println("Файл не содержит данных. Работа завершена");
     }
@@ -56,11 +60,21 @@ public class Messages {
 
     public static void printFileNotCorrect() {
         System.out.println("В файле неверная команда.");
+        System.out.println("Работа завершена.");
     }
 
     public static void printWrongArgs() {
         System.out.println("Неверный набор аргументов!");
         System.out.println();
         printHelpInfo();
+    }
+
+    public static void printConsoleInputMessage() {
+        System.out.println("Введите команду и набор чисел:");
+        System.out.println("(для окончания работы введите exit)");
+    }
+
+    public static void printWrongInputMessage() {
+        System.out.println("Неверный ввод, попробуйте снова!");
     }
 }

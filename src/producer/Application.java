@@ -1,6 +1,5 @@
 package producer;
 
-import controller.IContext;
 import util.ArgsParser;
 
 public class Application {

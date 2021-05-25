@@ -1,6 +1,6 @@
 import producer.Application;
 
-public class Main {
+public class TestApp {
     public static void main(String[] args) {
         Application.run(args);
     }

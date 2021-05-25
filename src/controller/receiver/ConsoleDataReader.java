@@ -2,22 +2,30 @@ package controller.receiver;
 
 import producer.Operations;
 import util.CommandChecker;
+import util.Messages;
 import java.util.Scanner;
 
 public class ConsoleDataReader extends DataReceiver {
+
     public Operations getOperation() {
         CommandChecker commandChecker = new CommandChecker();
         boolean isCorrectInput = false;
         Scanner scanner = new Scanner(System.in);
 
         while (!isCorrectInput) {
-            System.out.println("Введите команду и набор чисел:");
-            commandChecker.setCommand(scanner.nextLine());
-            System.out.println();
+            Messages.printConsoleInputMessage();
+            String command = scanner.nextLine();
+
+            if (command.equals(Messages.EXIT_COMMAND)) {
+                return null;
+            }
+
+            commandChecker.setCommand(command);
+
             isCorrectInput = commandChecker.isCommandValid();
 
             if (!isCorrectInput) {
-                System.out.println("Неверный ввод, попробуйте снова!");
+                Messages.printWrongInputMessage();
             }
         }
 

@@ -1,13 +1,14 @@
 package util;
 
-import controller.Context;
-import controller.IContext;
+import producer.CalcContext;
+import producer.IContext;
 import controller.IDataReceiver;
 import controller.IDataSender;
 import controller.receiver.ConsoleDataReader;
 import controller.receiver.FileDataReader;
 import controller.sender.ConsoleDataSender;
 import controller.sender.FileDataSender;
+import producer.HelpContext;
 import java.io.File;
 
 public class ArgsParser {
@@ -41,6 +42,10 @@ public class ArgsParser {
     }
 
     public static IContext getContext() {
+        if (args[0].equals("/?")) {
+            return new HelpContext();
+        }
+
         if (args.length < 2) {
             Messages.printWrongArgs();
             return null;
@@ -70,6 +75,6 @@ public class ArgsParser {
             ((FileDataSender) sender).setFilePath(args[1]);
         }
 
-        return new Context(receiver, sender);
+        return new CalcContext(receiver, sender);
     }
 }
