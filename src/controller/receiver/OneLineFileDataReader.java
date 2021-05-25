@@ -8,7 +8,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class FileDataReader extends DataReceiver {
+public class OneLineFileDataReader extends DataReceiver {
     private String inputFilePath;
 
     public String getInputFilePath() {

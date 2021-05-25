@@ -5,9 +5,9 @@ import producer.IContext;
 import controller.IDataReceiver;
 import controller.IDataSender;
 import controller.receiver.ConsoleDataReader;
-import controller.receiver.FileDataReader;
+import controller.receiver.OneLineFileDataReader;
 import controller.sender.ConsoleDataSender;
-import controller.sender.FileDataSender;
+import controller.sender.OneLineFileDataSender;
 import producer.HelpContext;
 import java.io.File;
 
@@ -57,10 +57,10 @@ public class ArgsParser {
         if (args[0].charAt(0) == CONSOLE_RUN_ARGS_KEY) {
             receiver = new ConsoleDataReader();
         } else {
-            receiver = new FileDataReader();
+            receiver = new OneLineFileDataReader();
 
             if (isInputFileExist()) {
-                ((FileDataReader) receiver).setFilePath(args[0]);
+                ((OneLineFileDataReader) receiver).setFilePath(args[0]);
             } else {
                 Messages.printFileNotFound(args[0]);
 
@@ -71,8 +71,8 @@ public class ArgsParser {
         if (args[1].charAt(0) == CONSOLE_RUN_ARGS_KEY) {
             sender = new ConsoleDataSender();
         } else {
-            sender = new FileDataSender();
-            ((FileDataSender) sender).setFilePath(args[1]);
+            sender = new OneLineFileDataSender();
+            ((OneLineFileDataSender) sender).setFilePath(args[1]);
         }
 
         return new CalcContext(receiver, sender);

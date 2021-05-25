@@ -2,7 +2,7 @@ package controller.sender;
 
 import java.io.*;
 
-public class FileDataSender extends DataSender {
+public class OneLineFileDataSender extends DataSender {
     private String result;
     private String filePath;
 
