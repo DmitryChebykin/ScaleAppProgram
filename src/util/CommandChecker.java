@@ -17,9 +17,9 @@ public class CommandChecker {
 
     public CommandChecker(String command) {
         this.command = command;
-        parsedOperation = getParsedOperation()[0];
-        String[] temp = new String[getParsedOperation().length - 1];
-        System.arraycopy(getParsedOperation(), 1, temp, 0, getParsedOperation().length);
+        parsedOperation = getParsedCommand()[0];
+        String[] temp = new String[getParsedCommand().length - 1];
+        System.arraycopy(getParsedCommand(), 1, temp, 0, getParsedCommand().length);
         parsedNumbers = temp;
     }
 
@@ -34,19 +34,19 @@ public class CommandChecker {
 
     public void setCommand(String command) {
         this.command = command;
-        parsedOperation = getParsedOperation()[0];
-        String[] temp = new String[getParsedOperation().length - 1];
-        System.arraycopy(getParsedOperation(), 1, temp, 0, getParsedOperation().length - 1);
+        parsedOperation = getParsedCommand()[0];
+        String[] temp = new String[getParsedCommand().length - 1];
+        System.arraycopy(getParsedCommand(), 1, temp, 0, getParsedCommand().length - 1);
         parsedNumbers = temp;
     }
 
-    private String[] getParsedOperation() {
+    private String[] getParsedCommand() {
         command = command.trim();
         return command.split("\\s+");
     }
 
     private boolean isOperationValid() {
-        String consoleOperation = getParsedOperation()[0];
+        String consoleOperation = getParsedCommand()[0];
         return Stream.of(Operations.values()).anyMatch(x -> x.getOperationName().equals(consoleOperation));
     }
 

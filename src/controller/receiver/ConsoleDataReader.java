@@ -9,8 +9,10 @@ public class ConsoleDataReader extends DataReceiver {
 
     public Operations getOperation() {
         CommandChecker commandChecker = new CommandChecker();
-        boolean isCorrectInput = false;
+
         Scanner scanner = new Scanner(System.in);
+
+        boolean isCorrectInput = false;
 
         while (!isCorrectInput) {
             Messages.printConsoleInputMessage();
